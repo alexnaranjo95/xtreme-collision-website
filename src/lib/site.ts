@@ -1,7 +1,7 @@
 export const site = {
   name: "Xtreme Collision",
-  phone: "(469) 896-4858",
-  phoneHref: "tel:+14698964858",
+  phone: "(972) 233-0207",
+  phoneHref: "tel:+19722330207",
   address: "2025 Midway Road, Suite E, Carrollton, TX 75006",
   areas: "Carrollton, Addison, Dallas, Plano, Frisco, Richardson",
   url: "https://www.xtremecollision.com",

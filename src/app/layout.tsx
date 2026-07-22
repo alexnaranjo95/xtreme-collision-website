@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Oswald } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -74,7 +75,7 @@ const jsonLd = {
   logo: "https://www.xtremecollision.com/images/xtreme-logo.png",
   description:
     "Expert collision repair in Carrollton, TX. Xtreme Collision works with all major insurance companies, offers a lifetime limited warranty, and repairs vehicles to factory standards.",
-  telephone: "(469) 896-4858",
+  telephone: "(972) 233-0207",
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",
@@ -115,6 +116,14 @@ export default function RootLayout({
       className={`light ${geistSans.variable} ${oswald.variable}`}
     >
       <body className="font-sans antialiased">
+        <Script
+          src="https://backend.leadconnectorhq.com/appengine/loc/7265He95WmGfBaKz95x6/pool/n9sMqLoOEpR6FQWJu9U5/number_pool.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="https://backend.leadconnectorhq.com/appengine/js/user_session.js"
+          strategy="beforeInteractive"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
