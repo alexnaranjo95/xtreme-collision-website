@@ -102,7 +102,15 @@ const jsonLd = {
     "https://www.facebook.com/XtremeCollisionRepair",
     "https://www.instagram.com/xtreme_collision/",
     "https://www.yelp.com/biz/xtreme-collision-repair-carrollton",
+    "https://share.google/m0UgtxT4sFpzhDMIs",
   ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "1168",
+    bestRating: "5",
+    worstRating: "1",
+  },
 };
 
 export default function RootLayout({

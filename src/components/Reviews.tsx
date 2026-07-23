@@ -1,22 +1,19 @@
 import Image from "next/image";
 import { Quote, Star } from "lucide-react";
-import { reviews } from "@/lib/site";
+import { reviews, socialProof } from "@/lib/site";
 
 export function Reviews() {
   return (
-    <section aria-labelledby="reviews-heading" className="bg-background py-20">
+    <section id="reviews" aria-labelledby="reviews-heading" className="bg-background py-20">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="mx-auto mb-12 max-w-2xl text-center">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
           <div className="mb-3 flex items-center justify-center gap-1" aria-hidden="true">
             {Array.from({ length: 5 }).map((_, i) => (
-              <Star
-                key={i}
-                className="h-6 w-6 fill-accent text-accent"
-              />
+              <Star key={i} className="h-6 w-6 fill-accent text-accent" />
             ))}
           </div>
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-            5-Star Google Reviews 2025
+            {socialProof.google.rating}★ · {socialProof.google.reviewCount}+ Google Reviews
           </p>
           <h2
             id="reviews-heading"
@@ -24,9 +21,40 @@ export function Reviews() {
           >
             North Texas Trusts Xtreme Collision
           </h2>
+          <p className="mt-3 text-muted-foreground">
+            Real customer feedback from Google, Yelp, and Facebook — not
+            marketing copy.
+          </p>
         </div>
 
-        <div className="grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href={socialProof.google.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+          >
+            Google {socialProof.google.rating}★ ({socialProof.google.reviewCount})
+          </a>
+          <a
+            href={socialProof.yelp.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+          >
+            Yelp {socialProof.yelp.rating}★ ({socialProof.yelp.reviewCount})
+          </a>
+          <a
+            href={socialProof.facebook.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-primary transition-colors hover:border-accent hover:text-accent"
+          >
+            Facebook {socialProof.facebook.rating} recommend
+          </a>
+        </div>
+
+        <div className="grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="relative mx-auto aspect-square w-full max-w-md">
             <Image
               src="/images/xtreme-collision-repairs.png"
@@ -37,38 +65,52 @@ export function Reviews() {
             />
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-1">
+          <div className="grid gap-5 sm:grid-cols-2">
             {reviews.map((review) => (
               <figure
-                key={review.label}
-                className="flex flex-col rounded-2xl border border-border bg-card p-7 shadow-sm"
+                key={`${review.author}-${review.source}`}
+                className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-sm"
               >
-                <Quote
-                  className="mb-4 h-8 w-8 text-accent"
-                  aria-hidden="true"
-                />
-                <blockquote className="flex-1 leading-relaxed text-foreground">
+                <div className="mb-3 flex items-center gap-1" aria-label={`${review.rating} stars`}>
+                  {Array.from({ length: review.rating }).map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-4 w-4 fill-accent text-accent"
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+                <Quote className="mb-3 h-6 w-6 text-accent" aria-hidden="true" />
+                <blockquote className="flex-1 text-sm leading-relaxed text-foreground">
                   &ldquo;{review.quote}&rdquo;
                 </blockquote>
-                <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-4">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary font-heading text-sm font-bold text-accent">
-                    5
-                  </span>
-                  <span className="flex-1">
+                <figcaption className="mt-5 flex items-center justify-between gap-3 border-t border-border pt-4">
+                  <span>
                     <span className="block font-semibold text-primary">
-                      {review.label}
+                      {review.author}
                     </span>
-                    <span className="block text-sm text-muted-foreground">
-                      Google Review 2025
+                    <span className="block text-xs text-muted-foreground">
+                      Verified {review.source} review
                     </span>
                   </span>
-                  <span className="rounded-full bg-secondary px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-                    Google
+                  <span className="rounded-full bg-secondary px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+                    {review.source}
                   </span>
                 </figcaption>
               </figure>
             ))}
           </div>
+        </div>
+
+        <div className="mt-10 text-center">
+          <a
+            href={socialProof.google.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 font-heading text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-[1.03]"
+          >
+            Read all {socialProof.google.reviewCount}+ Google reviews
+          </a>
         </div>
       </div>
     </section>

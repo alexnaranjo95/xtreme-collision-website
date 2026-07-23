@@ -9,6 +9,9 @@ export const site = {
     facebook: "https://www.facebook.com/XtremeCollisionRepair",
     instagram: "https://www.instagram.com/xtreme_collision/",
     yelp: "https://www.yelp.com/biz/xtreme-collision-repair-carrollton",
+    google:
+      "https://www.google.com/maps/place/Xtreme+Collision+Repair/@32.9633531,-96.8396963,17z/data=!3m1!4b1!4m6!3m5!1s0x864c26b5a094dbe9:0x42382e7dabddf069!8m2!3d32.9633531!4d-96.8396963!16s%2Fg%2F1tf081k2",
+    googleShare: "https://share.google/m0UgtxT4sFpzhDMIs",
   },
   hours: [
     { day: "Mon", hours: "8:00am - 5:30pm" },
@@ -225,26 +228,75 @@ export const whyUs = [
   },
 ] as const;
 
+export const socialProof = {
+  google: {
+    rating: "4.8",
+    reviewCount: "1,168",
+    reviewCountRaw: 1168,
+    label: "Google",
+    href: "https://share.google/m0UgtxT4sFpzhDMIs",
+  },
+  yelp: {
+    rating: "4.4",
+    reviewCount: "153",
+    reviewCountRaw: 153,
+    label: "Yelp",
+    href: "https://www.yelp.com/biz/xtreme-collision-repair-carrollton",
+  },
+  facebook: {
+    rating: "98%",
+    reviewCount: "45",
+    reviewCountRaw: 45,
+    label: "Facebook recommend",
+    href: "https://www.facebook.com/XtremeCollisionRepair",
+  },
+} as const;
+
 export const reviews = [
   {
-    quote: "Work was excellent on a rear bumper paint job for a mint E39.",
-    label: "Body & paintwork",
+    quote:
+      "Great communication, work done quickly, excellent staff and great work done.",
+    author: "db",
+    source: "Google",
+    rating: 5,
+  },
+  {
+    quote: "Quality work, great service, would highly recommend!",
+    author: "Ayesha Smith",
+    source: "Google",
+    rating: 5,
+  },
+  {
+    quote: "Nice group of people that run the place too.",
+    author: "Mark",
+    source: "Google",
+    rating: 5,
   },
   {
     quote:
-      "They did an awesome job on an F-150 and helped through the full process.",
-    label: "F-150 repair",
+      "Brock was amazing, he explained the process, showed me different estimates of what to expect and just overall made the experience great.",
+    author: "Yelp Customer",
+    source: "Yelp",
+    rating: 5,
+  },
+  {
+    quote: "Work was excellent on a rear bumper paint job for a mint E39.",
+    author: "BMW Owner",
+    source: "Google",
+    rating: 5,
   },
   {
     quote:
       "The repair followed GM standards, used OEM parts, and the process was smooth.",
-    label: "GM owner experience",
+    author: "GM Owner",
+    source: "Google",
+    rating: 5,
   },
 ] as const;
 
 export const stats = [
-  { value: "20+", label: "Years of Experience" },
-  { value: "15,000+", label: "Vehicles Restored" },
-  { value: "5.0", label: "Average Star Rating" },
-  { value: "100%", label: "Major Insurers Accepted" },
+  { value: "4.8★", label: "Google Rating" },
+  { value: "1,168+", label: "Google Reviews" },
+  { value: "153+", label: "Yelp Reviews" },
+  { value: "98%", label: "Facebook Recommend" },
 ] as const;

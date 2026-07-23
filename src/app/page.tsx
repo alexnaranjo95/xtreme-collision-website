@@ -9,6 +9,7 @@ import { Reviews } from "@/components/Reviews";
 import { Services } from "@/components/Services";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SocialProofBar } from "@/components/SocialProofBar";
 import { Stats } from "@/components/Stats";
 import { WhyUs } from "@/components/WhyUs";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <SiteHeader />
       <main className="pb-16 md:pb-0">
         <Hero />
+        <SocialProofBar />
         <CertCarousel />
         <Stats />
         <Services />

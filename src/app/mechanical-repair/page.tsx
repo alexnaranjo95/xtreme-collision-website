@@ -4,8 +4,11 @@ import { EstimateForm } from "@/components/EstimateForm";
 import { MechanicalHero } from "@/components/MechanicalHero";
 import { MechanicalServicesGrid } from "@/components/MechanicalServicesGrid";
 import { MobileBar } from "@/components/MobileBar";
+import { Reviews } from "@/components/Reviews";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SocialProofBar } from "@/components/SocialProofBar";
+import { Stats } from "@/components/Stats";
 import { mechanicalServices, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -40,7 +43,10 @@ export default function MechanicalRepairPage() {
       <SiteHeader />
       <main className="pb-16 md:pb-0">
         <MechanicalHero />
+        <SocialProofBar />
+        <Stats />
         <MechanicalServicesGrid />
+        <Reviews />
 
         <section className="bg-accent py-16 text-accent-foreground">
           <div className="mx-auto flex max-w-7xl flex-col items-start gap-6 px-4 md:flex-row md:items-center md:justify-between">
