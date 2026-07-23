@@ -24,7 +24,7 @@ export function SiteHeader() {
       <div className="border-b border-border/70 bg-white/95 shadow-[0_10px_30px_rgba(15,23,42,0.08)] backdrop-blur supports-[backdrop-filter]:bg-white/88">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
           <a
-            href="#top"
+            href="/"
             className="rounded-2xl bg-white px-3 py-2 shadow-sm ring-1 ring-border/70 transition-transform hover:scale-[1.01]"
             aria-label={site.name}
           >

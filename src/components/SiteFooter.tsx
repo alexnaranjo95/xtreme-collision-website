@@ -123,7 +123,7 @@ export function SiteFooter() {
             on the road.
           </p>
           <a
-            href="#estimate"
+            href="/#estimate"
             className="mt-4 inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-sm font-bold uppercase tracking-wide text-accent-foreground transition-transform hover:scale-[1.03]"
           >
             Schedule An Appointment

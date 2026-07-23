@@ -22,10 +22,11 @@ export const site = {
 } as const;
 
 export const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#insurance", label: "Insurance" },
-  { href: "#why-us", label: "Why Us" },
-  { href: "#estimate", label: "Free Estimate" },
+  { href: "/#services", label: "Services" },
+  { href: "/mechanical-repair", label: "Mechanical" },
+  { href: "/#insurance", label: "Insurance" },
+  { href: "/#why-us", label: "Why Us" },
+  { href: "/#estimate", label: "Free Estimate" },
 ] as const;
 
 export const certLogos = [
@@ -121,6 +122,54 @@ export const services = [
     icon: "palette",
   },
 ] as const;
+
+export const mechanicalServices = [
+  {
+    id: "engine-repair",
+    title: "Engine Repair & Diagnostics",
+    description:
+      "From check-engine lights to major engine work, we diagnose the issue accurately and get you back on the road with confidence.",
+    icon: "gauge",
+  },
+  {
+    id: "transmission-repair",
+    title: "Transmission Repair",
+    description:
+      "Slipping gears, hard shifts, or fluid leaks — our technicians service and repair automatic and manual transmissions.",
+    icon: "settings",
+  },
+  {
+    id: "brake-repair",
+    title: "Brake Repair & Service",
+    description:
+      "Pads, rotors, calipers, and brake fluid flushes to keep your stopping power strong and your vehicle safe.",
+    icon: "disc",
+  },
+  {
+    id: "oil-change",
+    title: "Oil Changes & Maintenance",
+    description:
+      "Routine oil changes, filter replacements, and scheduled maintenance that protect your engine and extend vehicle life.",
+    icon: "droplets",
+  },
+  {
+    id: "cooling-system",
+    title: "Cooling System Repair",
+    description:
+      "Radiators, water pumps, hoses, and thermostat work to stop overheating before it becomes a costly engine failure.",
+    icon: "thermometer",
+  },
+  {
+    id: "ac-heating",
+    title: "AC & Heating Service",
+    description:
+      "Weak airflow, warm A/C, or heater issues — we recharge, diagnose, and repair climate-control systems year-round.",
+    icon: "snowflake",
+  },
+] as const;
+
+/** Landing URL for mechanical-repair ad groups */
+export const mechanicalRepairPath = "/mechanical-repair";
 
 export const processSteps = [
   {
