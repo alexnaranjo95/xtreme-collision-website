@@ -132,8 +132,19 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-primary-foreground/10">
-        <div className="mx-auto flex max-w-7xl px-4 py-5 text-xs text-primary-foreground/55">
-          © {new Date().getFullYear()} {site.name}. All Rights Reserved.
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-xs text-primary-foreground/55 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} {site.name}. All Rights Reserved.</p>
+          <nav aria-label="Legal" className="flex flex-wrap gap-x-4 gap-y-1">
+            <a href="/privacy" className="transition-colors hover:text-accent">
+              Privacy Policy
+            </a>
+            <a href="/terms" className="transition-colors hover:text-accent">
+              Terms of Service
+            </a>
+            <a href="/sms" className="transition-colors hover:text-accent">
+              SMS Program
+            </a>
+          </nav>
         </div>
       </div>
     </footer>
