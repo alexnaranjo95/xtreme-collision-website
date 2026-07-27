@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Oswald } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -124,14 +123,6 @@ export default function RootLayout({
       className={`light ${geistSans.variable} ${oswald.variable}`}
     >
       <body className="font-sans antialiased">
-        <Script
-          src="https://backend.leadconnectorhq.com/appengine/loc/7265He95WmGfBaKz95x6/pool/n9sMqLoOEpR6FQWJu9U5/number_pool.js"
-          strategy="beforeInteractive"
-        />
-        <Script
-          src="https://backend.leadconnectorhq.com/appengine/js/user_session.js"
-          strategy="beforeInteractive"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
