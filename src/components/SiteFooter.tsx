@@ -135,6 +135,9 @@ export function SiteFooter() {
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-xs text-primary-foreground/55 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {site.name}. All Rights Reserved.</p>
           <nav aria-label="Legal" className="flex flex-wrap gap-x-4 gap-y-1">
+            <a href="/chat" className="transition-colors hover:text-accent">
+              Chat
+            </a>
             <a href="/privacy" className="transition-colors hover:text-accent">
               Privacy Policy
             </a>

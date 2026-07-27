@@ -132,13 +132,6 @@ export default function RootLayout({
           src="https://backend.leadconnectorhq.com/appengine/js/user_session.js"
           strategy="beforeInteractive"
         />
-        <Script
-          src="https://widgets.leadconnectorhq.com/loader.js"
-          strategy="afterInteractive"
-          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-          data-widget-id="6a5e8137c40835bdcd3e77b9"
-          data-source="WEB_USER"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
