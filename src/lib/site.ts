@@ -26,6 +26,7 @@ export const site = {
 
 export const navLinks = [
   { href: "/#services", label: "Services" },
+  { href: "/hail-damage-repair", label: "Hail Repair" },
   { href: "/mechanical-repair", label: "Mechanical" },
   { href: "/#insurance", label: "Insurance" },
   { href: "/#why-us", label: "Why Us" },
@@ -173,6 +174,137 @@ export const mechanicalServices = [
 
 /** Landing URL for mechanical-repair ad groups */
 export const mechanicalRepairPath = "/mechanical-repair";
+
+/** Landing URL for hail-damage ad groups */
+export const hailRepairPath = "/hail-damage-repair";
+
+/**
+ * Towns the hail campaigns target. `zip` mirrors the postal code targeted in
+ * Google Ads, so geo targeting and landing copy cannot drift apart.
+ */
+export const hailCities = [
+  { slug: "keller-tx", city: "Keller", zip: "76244", county: "Tarrant County" },
+  { slug: "haslet-tx", city: "Haslet", zip: "76052", county: "Tarrant County" },
+  { slug: "roanoke-tx", city: "Roanoke", zip: "76262", county: "Denton County" },
+  { slug: "justin-tx", city: "Justin", zip: "76247", county: "Denton County" },
+  { slug: "aurora-tx", city: "Aurora", zip: "76078", county: "Wise County" },
+] as const;
+
+export type HailCity = (typeof hailCities)[number];
+
+export function findHailCity(slug: string): HailCity | undefined {
+  return hailCities.find((entry) => entry.slug === slug);
+}
+
+const cityListFormatter = new Intl.ListFormat("en-US", {
+  style: "long",
+  type: "conjunction",
+});
+
+export function joinCityNames(
+  cities: readonly HailCity[] = hailCities,
+): string {
+  return cityListFormatter.format(cities.map((entry) => entry.city));
+}
+
+export const hailClaimSteps = [
+  {
+    step: "01",
+    title: "Free Hail Inspection",
+    description:
+      "We document every dent — roof, hood, panels, and glass — so nothing is left off the estimate when the claim gets written.",
+    icon: "search",
+  },
+  {
+    step: "02",
+    title: "We Handle the Claim",
+    description:
+      "We work your estimate and any supplements directly with your adjuster. You don't chase paperwork or argue over line items.",
+    icon: "file-check",
+  },
+  {
+    step: "03",
+    title: "Rental Arranged Before You Leave",
+    description:
+      "We set up your insurance-paid rental through our partners at drop-off, so you drive home the same day instead of waiting on a ride.",
+    icon: "car",
+  },
+  {
+    step: "04",
+    title: "Paintless Repair, Factory Finish",
+    description:
+      "Most hail dents come out with paintless dent repair — no filler, no repaint, and your original factory paint stays intact.",
+    icon: "sparkles",
+  },
+] as const;
+
+export const hailAssurances = [
+  {
+    title: "Your Factory Paint Stays On",
+    description:
+      "Paintless dent repair works the metal back from behind the panel. No sanding, no repainting, no mismatched panels later.",
+    icon: "sparkles",
+  },
+  {
+    title: "Insurance-Paid Rental",
+    description:
+      "We coordinate the rental through our partners and bill it to the claim when your policy carries rental coverage.",
+    icon: "car",
+  },
+  {
+    title: "All Major Carriers",
+    description:
+      "State Farm, GEICO, Progressive, Allstate, USAA, Farmers, Liberty Mutual, Nationwide — we bill them directly.",
+    icon: "handshake",
+  },
+  {
+    title: "Lifetime Limited Warranty",
+    description:
+      "Every hail repair we perform is backed by our lifetime limited warranty for as long as you own the vehicle.",
+    icon: "badge-check",
+  },
+] as const;
+
+/**
+ * Hail FAQs, built per town so each landing page answers the questions a
+ * driver in that specific town actually asks.
+ */
+export function buildHailFaqs(city: HailCity | null) {
+  const where = city ? `${city.city}, TX` : "North Texas";
+  const zipNote = city ? ` (${city.zip})` : "";
+
+  return [
+    {
+      question: `Do you repair hail damage for ${where} drivers?`,
+      answer: `Yes. ${where}${zipNote} is inside the area we serve. Repairs are completed at our Carrollton facility at ${site.address}, and we arrange your insurance-paid rental at drop-off so the drive over costs you nothing but the trip.`,
+    },
+    {
+      question: "Will filing a hail claim raise my rates?",
+      answer:
+        "Hail is a comprehensive, no-fault weather claim — it is not an at-fault accident. Most carriers treat it very differently than a collision. Your agent can confirm the specifics of your policy, and we are happy to walk through the estimate with you either way.",
+    },
+    {
+      question: "What will I pay out of pocket?",
+      answer:
+        "Typically just your comprehensive deductible. We bill the balance directly to your insurer, and your written estimate is free with no obligation to book the repair.",
+    },
+    {
+      question: "How long does hail repair take?",
+      answer:
+        "Light hail handled with paintless dent repair often turns around in a few days. Heavy hail with panel replacement or glass takes longer. You get a realistic timeline in writing before we start, not after.",
+    },
+    {
+      question: "Is paintless dent repair better than a repaint?",
+      answer:
+        "For hail, almost always. Paintless dent repair keeps your original factory finish, which protects resale value and avoids the color-match and overspray problems that come with repainting panels. When damage is too deep for PDR, we tell you and use our Sherwin Williams certified color matching instead.",
+    },
+    {
+      question: "Do you handle hail-damaged glass and windshields?",
+      answer:
+        "Yes. Cracked and pitted glass is part of the same claim, so we inspect the windshield and all glass alongside the body panels and include it in one estimate.",
+    },
+  ];
+}
 
 export const processSteps = [
   {
