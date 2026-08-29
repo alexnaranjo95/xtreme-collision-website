@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Oswald } from "next/font/google";
+import { hailCities } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -96,6 +97,10 @@ const jsonLd = {
     { "@type": "City", name: "Plano" },
     { "@type": "City", name: "Frisco" },
     { "@type": "City", name: "Richardson" },
+    ...hailCities.map((entry) => ({
+      "@type": "City" as const,
+      name: entry.city,
+    })),
   ],
   sameAs: [
     "https://www.facebook.com/XtremeCollisionRepair",
