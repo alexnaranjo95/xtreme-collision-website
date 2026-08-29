@@ -33,6 +33,10 @@ export const site = {
 export const instantQuoteUrl =
   "https://xtremecollision.auto.us.tractable.io/landing-page/065d729a-e7b6-4e74-9fab-f5248497b9d4";
 
+/** Write-only endpoint for quote-click attribution (Cloudflare Worker + D1). */
+export const quoteClickEndpoint =
+  "https://xtreme-quote-clicks.metricslab-speed.workers.dev/";
+
 export const instantQuoteSteps = [
   {
     step: "01",
