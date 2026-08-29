@@ -24,6 +24,39 @@ export const site = {
   ],
 } as const;
 
+/**
+ * Tractable's hosted photo-estimate flow. It opens in a new tab on purpose:
+ * the flow collects a phone number and texts an upload link, so its SMS consent
+ * stays on tractable.io rather than adding a second opt-in path to this domain
+ * (see /chat, which is the only SMS opt-in we register for A2P).
+ */
+export const instantQuoteUrl =
+  "https://xtremecollision.auto.us.tractable.io/landing-page/065d729a-e7b6-4e74-9fab-f5248497b9d4";
+
+export const instantQuoteSteps = [
+  {
+    step: "01",
+    title: "Tell Us How to Reach You",
+    description:
+      "Enter your name, email, and mobile number. We text you a secure link — there is no app to download.",
+    icon: "message",
+  },
+  {
+    step: "02",
+    title: "Photograph the Damage",
+    description:
+      "The link walks you through the exact photos our estimators need, straight from your phone camera.",
+    icon: "camera",
+  },
+  {
+    step: "03",
+    title: "Get Your Quote and a Call Back",
+    description:
+      "You get an initial repair quote in minutes, then our team reviews it and follows up during business hours.",
+    icon: "clipboard",
+  },
+] as const;
+
 export const navLinks = [
   { href: "/#services", label: "Services" },
   { href: "/hail-damage-repair", label: "Hail Repair" },

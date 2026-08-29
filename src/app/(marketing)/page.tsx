@@ -1,8 +1,8 @@
 import { CertCarousel } from "@/components/CertCarousel";
 import { CtaBanner } from "@/components/CtaBanner";
-import { EstimateForm } from "@/components/EstimateForm";
 import { Hero } from "@/components/Hero";
 import { Insurance } from "@/components/Insurance";
+import { InstantQuote } from "@/components/InstantQuote";
 import { MobileBar } from "@/components/MobileBar";
 import { Process } from "@/components/Process";
 import { Reviews } from "@/components/Reviews";
@@ -28,7 +28,7 @@ export default function Home() {
         <WhyUs />
         <Reviews />
         <CtaBanner />
-        <EstimateForm />
+        <InstantQuote />
       </main>
       <SiteFooter />
       <MobileBar />

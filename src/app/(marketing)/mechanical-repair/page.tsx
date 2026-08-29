@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { CalendarCheck, Phone } from "lucide-react";
-import { EstimateForm } from "@/components/EstimateForm";
+import { InstantQuote } from "@/components/InstantQuote";
 import { MechanicalHero } from "@/components/MechanicalHero";
 import { MechanicalServicesGrid } from "@/components/MechanicalServicesGrid";
 import { MobileBar } from "@/components/MobileBar";
@@ -91,7 +91,7 @@ export default function MechanicalRepairPage() {
           </div>
         </section>
 
-        <EstimateForm />
+        <InstantQuote />
       </main>
       <SiteFooter />
       <MobileBar />
