@@ -1,12 +1,12 @@
 import {
   Camera,
   ClipboardCheck,
-  ExternalLink,
   MessageSquareText,
   Phone,
   type LucideIcon,
 } from "lucide-react";
-import { instantQuoteSteps, instantQuoteUrl, site } from "@/lib/site";
+import { InstantQuoteLink } from "@/components/InstantQuoteLink";
+import { instantQuoteSteps, site } from "@/lib/site";
 
 const icons: Record<string, LucideIcon> = {
   message: MessageSquareText,
@@ -73,16 +73,7 @@ export function InstantQuote() {
             })}
           </ol>
 
-          <a
-            href={instantQuoteUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-9 inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent px-7 py-4 font-heading text-base font-semibold uppercase tracking-wide text-accent-foreground shadow-lg transition-transform hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-          >
-            Start My Instant Quote
-            <ExternalLink className="h-5 w-5" aria-hidden="true" />
-            <span className="sr-only">(opens in a new tab)</span>
-          </a>
+          <InstantQuoteLink className="mt-9 inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent px-7 py-4 font-heading text-base font-semibold uppercase tracking-wide text-accent-foreground shadow-lg transition-transform hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2" />
 
           <p className="mt-4 text-center text-xs leading-relaxed text-muted-foreground">
             Free and no obligation. Your quote is an initial estimate based on
