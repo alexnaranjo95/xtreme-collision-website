@@ -1,12 +1,12 @@
 import { CalendarCheck, Phone } from "lucide-react";
 import { CertCarousel } from "@/components/CertCarousel";
-import { EstimateForm } from "@/components/EstimateForm";
 import { HailAssurances } from "@/components/HailAssurances";
 import { HailClaimSteps } from "@/components/HailClaimSteps";
 import { HailFaq } from "@/components/HailFaq";
 import { HailHero } from "@/components/HailHero";
 import { HailServiceArea } from "@/components/HailServiceArea";
 import { Insurance } from "@/components/Insurance";
+import { InstantQuote } from "@/components/InstantQuote";
 import { MobileBar } from "@/components/MobileBar";
 import { Reviews } from "@/components/Reviews";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -124,7 +124,7 @@ export function HailLanding({ city = null }: { city?: HailCity | null }) {
           </div>
         </section>
 
-        <EstimateForm />
+        <InstantQuote />
       </main>
       <SiteFooter />
       <MobileBar />
