@@ -91,3 +91,40 @@
 .insurer-carousel .brand-carousel-track {
   animation-duration: 45s;
 }
+
+@keyframes hail-fall {
+  0% {
+    transform: translateY(-2rem);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(54rem);
+    opacity: 0;
+  }
+}
+
+.hailstone {
+  position: absolute;
+  top: -2rem;
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.85);
+  box-shadow: 0 0 8px rgb(255 255 255 / 0.55);
+  animation: hail-fall linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hailstone {
+    display: none;
+  }
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item[open] .faq-chevron {
+  transform: rotate(180deg);
+}

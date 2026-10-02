@@ -2,7 +2,13 @@ import Image from "next/image";
 import { Quote, Star } from "lucide-react";
 import { reviews, socialProof } from "@/lib/site";
 
-export function Reviews() {
+export function Reviews({
+  heading = "North Texas Trusts Xtreme Collision",
+  description = "Real customer feedback from Google, Yelp, and Facebook — not marketing copy.",
+}: {
+  heading?: string;
+  description?: string;
+}) {
   return (
     <section id="reviews" aria-labelledby="reviews-heading" className="bg-background py-20">
       <div className="mx-auto max-w-7xl px-4">
@@ -19,12 +25,9 @@ export function Reviews() {
             id="reviews-heading"
             className="font-heading text-3xl font-bold uppercase tracking-tight text-balance text-primary sm:text-4xl"
           >
-            North Texas Trusts Xtreme Collision
+            {heading}
           </h2>
-          <p className="mt-3 text-muted-foreground">
-            Real customer feedback from Google, Yelp, and Facebook — not
-            marketing copy.
-          </p>
+          <p className="mt-3 text-muted-foreground">{description}</p>
         </div>
 
         <div className="mb-10 flex flex-wrap items-center justify-center gap-3">

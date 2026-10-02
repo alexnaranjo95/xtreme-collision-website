@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { MapPin, Phone } from "lucide-react";
-import { site } from "@/lib/site";
+import { clearfieldUrl } from "@/lib/clearfield";
+import { carrolltonLocation, site, type LocationContact } from "@/lib/site";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -26,7 +27,16 @@ function YelpIcon({ className }: { className?: string }) {
   );
 }
 
-export function SiteFooter() {
+const locationLinks = [
+  { href: `${site.url}/`, label: "Carrollton, TX — Collision Repair" },
+  { href: `${clearfieldUrl}/`, label: "Clearfield, UT — Hail Repair" },
+] as const;
+
+export function SiteFooter({
+  location = carrolltonLocation,
+}: {
+  location?: LocationContact;
+}) {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-3">
@@ -39,7 +49,7 @@ export function SiteFooter() {
             className="h-16 w-auto"
           />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
-            5-star auto body &amp; collision repair serving {site.areas} and
+            5-star auto body &amp; collision repair serving {location.areas} and
             surrounding areas.
           </p>
           <div className="mt-5 flex flex-wrap gap-2.5">
@@ -73,25 +83,25 @@ export function SiteFooter() {
           </div>
           <div className="mt-6 space-y-2 text-sm text-primary-foreground/80">
             <a
-              href={site.phoneHref}
+              href={location.phoneHref}
               className="flex items-center gap-2 transition-colors hover:text-accent"
             >
               <Phone className="h-4 w-4 text-accent" aria-hidden="true" />
-              {site.phone}
+              {location.phone}
             </a>
             <p className="flex items-start gap-2">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-              {site.address}
+              {location.address}
             </p>
           </div>
         </div>
 
         <div>
           <h3 className="font-heading text-lg font-semibold uppercase tracking-wide">
-            Business Hours
+            {location.label} Hours
           </h3>
           <ul className="mt-4 space-y-2 text-sm">
-            {site.hours.map((row) => (
+            {location.hours.map((row) => (
               <li
                 key={row.day}
                 className="flex items-center justify-between gap-4 border-b border-primary-foreground/10 pb-2 last:border-0"
@@ -103,17 +113,43 @@ export function SiteFooter() {
               </li>
             ))}
           </ul>
+
+          <h3 className="mt-8 font-heading text-lg font-semibold uppercase tracking-wide">
+            Locations
+          </h3>
+          <ul className="mt-3 space-y-2 text-sm">
+            {locationLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-primary-foreground/75 transition-colors hover:text-accent"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="sm:col-span-2 lg:col-span-1">
           <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl">
-            <Image
-              src="/images/shop-location-carrollton.png"
-              alt="Xtreme Collision auto body and collision repair shop location in Carrollton"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 33vw"
-            />
+            {location.mapEmbedSrc ? (
+              <iframe
+                src={location.mapEmbedSrc}
+                title={`Map to ${site.name} at ${location.address}`}
+                className="absolute inset-0 h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            ) : (
+              <Image
+                src="/images/shop-location-carrollton.png"
+                alt="Xtreme Collision auto body and collision repair shop location in Carrollton"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 33vw"
+              />
+            )}
           </div>
           <h3 className="font-heading text-lg font-semibold uppercase tracking-wide">
             Ready to get started?
@@ -123,7 +159,7 @@ export function SiteFooter() {
             on the road.
           </p>
           <a
-            href="/#estimate"
+            href={location.estimateHref}
             className="mt-4 inline-flex items-center justify-center rounded-md bg-accent px-5 py-3 text-sm font-bold uppercase tracking-wide text-accent-foreground transition-transform hover:scale-[1.03]"
           >
             Schedule An Appointment

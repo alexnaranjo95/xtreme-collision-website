@@ -69,6 +69,33 @@ export const navLinks = [
   { href: "/#estimate", label: "Free Estimate" },
 ] as const;
 
+/** Contact + navigation details that shared chrome (header, footer, CTAs) renders per location. */
+export type LocationContact = {
+  label: string;
+  phone: string;
+  phoneHref: string;
+  address: string;
+  areas: string;
+  hours: readonly { day: string; hours: string }[];
+  homeHref: string;
+  estimateHref: string;
+  navLinks: readonly { href: string; label: string }[];
+  /** Google Maps embed shown in the footer instead of the shop photo. */
+  mapEmbedSrc?: string;
+};
+
+export const carrolltonLocation: LocationContact = {
+  label: "Carrollton, TX",
+  phone: site.phone,
+  phoneHref: site.phoneHref,
+  address: site.address,
+  areas: site.areas,
+  hours: site.hours,
+  homeHref: "/",
+  estimateHref: "/#estimate",
+  navLinks,
+};
+
 export const certLogos = [
   { src: "/images/cert-ford.png", alt: "Ford Certified Collision Center" },
   {
