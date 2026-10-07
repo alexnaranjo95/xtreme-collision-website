@@ -8,9 +8,9 @@ import { HailHero } from "@/components/hail/HailHero";
 import { HailStorms } from "@/components/hail/HailStorms";
 import { HailTrust } from "@/components/hail/HailTrust";
 import { MobileHailService } from "@/components/hail/MobileHailService";
+import { NearbyAreas } from "@/components/hail/NearbyAreas";
 import { PdrSection } from "@/components/hail/PdrSection";
 import { MobileBar } from "@/components/MobileBar";
-import { Reviews } from "@/components/Reviews";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import {
@@ -18,13 +18,13 @@ import {
   clearfieldAddress,
   clearfieldEstimateForm,
   clearfieldGeo,
-  clearfieldUrl,
+  clearfieldPageUrl,
   hailFaqs,
   serviceAreaCities,
 } from "@/lib/clearfield";
 import { site } from "@/lib/site";
 
-const pageUrl = `${clearfieldUrl}/`;
+const pageUrl = clearfieldPageUrl;
 const description =
   "Hail damage repair in Clearfield, UT. Free mobile hail inspections across Davis & Weber counties, paintless dent repair, and full insurance claim help at 665 N Main St.";
 
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/paintless-dent-repair-carrollton.webp",
+        url: "/images/hail-paintless-dent-repair-clearfield-ut.webp",
         width: 758,
         height: 500,
         alt: "Xtreme Collision technician performing paintless dent repair on hail damage",
@@ -95,12 +95,12 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": ["AutoBodyShop", "LocalBusiness"],
-    "@id": `${clearfieldUrl}/#business`,
+    "@id": `${pageUrl}#business`,
     name: `${site.name} — Clearfield Hail Repair`,
     url: pageUrl,
     image: [
-      `${site.url}/images/paintless-dent-repair-carrollton.webp`,
-      `${site.url}/images/auto-body-panel-refinishing-carrollton.webp`,
+      `${site.url}/images/hail-paintless-dent-repair-clearfield-ut.webp`,
+      `${site.url}/images/hail-damage-panel-repair-clearfield-ut.webp`,
     ],
     logo: `${site.url}/images/xtreme-logo.png`,
     description,
@@ -123,7 +123,6 @@ const jsonLd = [
       "@type": "Offer",
       itemOffered: { "@type": "Service", name },
     })),
-    parentOrganization: { "@id": `${site.url}/#business` },
   },
   {
     "@context": "https://schema.org",
@@ -154,10 +153,7 @@ export default function ClearfieldHailPage() {
         <PdrSection />
         <HailClaims />
         <HailTrust />
-        <Reviews
-          heading="Drivers Trust Xtreme Collision"
-          description="Real reviews from customers at our flagship Carrollton, TX shop — the same team and standards behind our Clearfield hail repair."
-        />
+        <NearbyAreas />
 
         <section className="bg-accent py-16 text-accent-foreground">
           <div className="mx-auto flex max-w-7xl flex-col items-start gap-6 px-4 md:flex-row md:items-center md:justify-between">

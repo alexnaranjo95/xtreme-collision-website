@@ -3,13 +3,12 @@ import {
   CalendarCheck,
   Check,
   CloudHail,
+  MapPin,
   Phone,
-  Star,
   TriangleAlert,
   Truck,
 } from "lucide-react";
 import { clearfield, clearfieldAddress, recentStorms } from "@/lib/clearfield";
-import { socialProof } from "@/lib/site";
 
 const hailstones = Array.from({ length: 28 }, (_, i) => ({
   left: (i * 37) % 100,
@@ -47,7 +46,7 @@ export function HailHero() {
 
       <section id="top" className="relative isolate overflow-hidden">
         <Image
-          src="/images/paintless-dent-repair-carrollton.webp"
+          src="/images/hail-paintless-dent-repair-clearfield-ut.webp"
           alt="Xtreme Collision technician performing paintless dent repair on a hail-damaged vehicle"
           fill
           priority
@@ -78,25 +77,10 @@ export function HailHero() {
               Hail Damage Repair • {clearfield.label}
             </span>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <div
-                className="flex items-center gap-1"
-                aria-label={`Rated ${socialProof.google.rating} out of 5 on Google`}
-              >
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-5 w-5 fill-accent text-accent" aria-hidden="true" />
-                ))}
-              </div>
-              <a
-                href={socialProof.google.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-semibold text-primary-foreground/90 underline-offset-4 hover:text-accent hover:underline"
-              >
-                {socialProof.google.rating}★ · {socialProof.google.reviewCount}+ Google
-                reviews at our flagship shop
-              </a>
-            </div>
+            <p className="flex items-center gap-2 text-sm font-semibold text-primary-foreground/90">
+              <MapPin className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+              Locally based in Clearfield · Serving Davis &amp; Weber counties
+            </p>
 
             <h1 className="max-w-3xl font-heading text-4xl font-bold uppercase leading-[1.05] tracking-tight text-balance text-primary-foreground sm:text-5xl lg:text-6xl">
               Hail Damage Repair in Clearfield, UT

@@ -82,6 +82,10 @@ export type LocationContact = {
   navLinks: readonly { href: string; label: string }[];
   /** Google Maps embed shown in the footer instead of the shop photo. */
   mapEmbedSrc?: string;
+  tagline: string;
+  /** Brand social profiles are Texas listings, so other locations hide them. */
+  showSocialLinks: boolean;
+  otherLocations: readonly { href: string; label: string }[];
 };
 
 export const carrolltonLocation: LocationContact = {
@@ -94,6 +98,14 @@ export const carrolltonLocation: LocationContact = {
   homeHref: "/",
   estimateHref: "/#estimate",
   navLinks,
+  tagline: `5-star auto body & collision repair serving ${site.areas} and surrounding areas.`,
+  showSocialLinks: true,
+  otherLocations: [
+    {
+      href: "https://www.xtremecollision.com/hail-damage-repair-clearfield-ut",
+      label: "Clearfield, UT — Hail Repair",
+    },
+  ],
 };
 
 export const certLogos = [

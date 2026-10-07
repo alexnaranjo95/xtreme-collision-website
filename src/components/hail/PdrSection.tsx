@@ -9,7 +9,7 @@ export function PdrSection() {
         <div className="grid grid-cols-5 gap-4">
           <div className="relative col-span-3 aspect-[3/4] overflow-hidden rounded-2xl shadow-xl">
             <Image
-              src="/images/paintless-dent-repair-carrollton.webp"
+              src="/images/hail-paintless-dent-repair-clearfield-ut.webp"
               alt="Xtreme Collision technician using a PDR rod to push out hail dents from inside a vehicle"
               fill
               className="object-cover"
@@ -18,7 +18,7 @@ export function PdrSection() {
           </div>
           <div className="relative col-span-2 mt-12 aspect-[3/4] overflow-hidden rounded-2xl shadow-xl">
             <Image
-              src="/images/auto-body-panel-refinishing-carrollton.webp"
+              src="/images/hail-damage-panel-repair-clearfield-ut.webp"
               alt="Technician reading hail dents on a hood under paintless dent repair lights"
               fill
               className="object-cover"

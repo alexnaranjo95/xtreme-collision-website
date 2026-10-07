@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { MapPin, Phone } from "lucide-react";
-import { clearfieldUrl } from "@/lib/clearfield";
 import { carrolltonLocation, site, type LocationContact } from "@/lib/site";
 
 function FacebookIcon({ className }: { className?: string }) {
@@ -27,11 +26,6 @@ function YelpIcon({ className }: { className?: string }) {
   );
 }
 
-const locationLinks = [
-  { href: `${site.url}/`, label: "Carrollton, TX — Collision Repair" },
-  { href: `${clearfieldUrl}/`, label: "Clearfield, UT — Hail Repair" },
-] as const;
-
 export function SiteFooter({
   location = carrolltonLocation,
 }: {
@@ -49,38 +43,39 @@ export function SiteFooter({
             className="h-16 w-auto"
           />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-primary-foreground/70">
-            5-star auto body &amp; collision repair serving {location.areas} and
-            surrounding areas.
+            {location.tagline}
           </p>
-          <div className="mt-5 flex flex-wrap gap-2.5">
-            <a
-              href={site.social.facebook}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Xtreme Collision on Facebook"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-primary-foreground/20 text-primary-foreground/80 transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground"
-            >
-              <FacebookIcon className="h-5 w-5" />
-            </a>
-            <a
-              href={site.social.instagram}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Xtreme Collision on Instagram"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-primary-foreground/20 text-primary-foreground/80 transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground"
-            >
-              <InstagramIcon className="h-5 w-5" />
-            </a>
-            <a
-              href={site.social.yelp}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Xtreme Collision on Yelp"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-primary-foreground/20 text-primary-foreground/80 transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground"
-            >
-              <YelpIcon className="h-5 w-5" />
-            </a>
-          </div>
+          {location.showSocialLinks ? (
+            <div className="mt-5 flex flex-wrap gap-2.5">
+              <a
+                href={site.social.facebook}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Xtreme Collision on Facebook"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-primary-foreground/20 text-primary-foreground/80 transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground"
+              >
+                <FacebookIcon className="h-5 w-5" />
+              </a>
+              <a
+                href={site.social.instagram}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Xtreme Collision on Instagram"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-primary-foreground/20 text-primary-foreground/80 transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground"
+              >
+                <InstagramIcon className="h-5 w-5" />
+              </a>
+              <a
+                href={site.social.yelp}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Xtreme Collision on Yelp"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-primary-foreground/20 text-primary-foreground/80 transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground"
+              >
+                <YelpIcon className="h-5 w-5" />
+              </a>
+            </div>
+          ) : null}
           <div className="mt-6 space-y-2 text-sm text-primary-foreground/80">
             <a
               href={location.phoneHref}
@@ -114,21 +109,25 @@ export function SiteFooter({
             ))}
           </ul>
 
-          <h3 className="mt-8 font-heading text-lg font-semibold uppercase tracking-wide">
-            Locations
-          </h3>
-          <ul className="mt-3 space-y-2 text-sm">
-            {locationLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-primary-foreground/75 transition-colors hover:text-accent"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {location.otherLocations.length > 0 ? (
+            <>
+              <h3 className="mt-8 font-heading text-lg font-semibold uppercase tracking-wide">
+                Also Serving
+              </h3>
+              <ul className="mt-3 space-y-2 text-sm">
+                {location.otherLocations.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="text-primary-foreground/75 transition-colors hover:text-accent"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
         </div>
 
         <div className="sm:col-span-2 lg:col-span-1">

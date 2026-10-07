@@ -2,9 +2,11 @@ import type { LocationContact } from "@/lib/site";
 
 export const clearfieldPath = "/hail-damage-repair-clearfield-ut";
 
-/** The subdomain root rewrites to `clearfieldPath` (see next.config.ts) and is the canonical URL. */
+/** The subdomain root rewrites to `clearfieldPath` (see next.config.ts). */
 export const clearfieldHost = "clearfield.xtremecollision.com";
-export const clearfieldUrl = `https://${clearfieldHost}`;
+
+/** Canonical URL; switch to `https://${clearfieldHost}/` once the subdomain's DNS is live. */
+export const clearfieldPageUrl = `https://www.xtremecollision.com${clearfieldPath}`;
 
 /** Umbrella host for Utah pages; its root shows the Clearfield page until a Utah hub exists. */
 export const utahHost = "utah.xtremecollision.com";
@@ -28,7 +30,7 @@ export const clearfield = {
     { day: "Sat", hours: "9:00am - 2:00pm" },
     { day: "Sun", hours: "Closed" },
   ],
-  homeHref: `${clearfieldUrl}/`,
+  homeHref: clearfieldPath,
   estimateHref: "#estimate",
   navLinks: [
     { href: "#storms", label: "Recent Storms" },
@@ -39,6 +41,10 @@ export const clearfield = {
   ],
   mapEmbedSrc:
     "https://www.google.com/maps?q=665+N+Main+St,+Clearfield,+UT+84015&z=15&output=embed",
+  tagline:
+    "Hail damage and paintless dent repair for Clearfield, Davis County, and the north Wasatch Front.",
+  showSocialLinks: false,
+  otherLocations: [],
 } satisfies LocationContact;
 
 export const clearfieldEstimateForm = {
@@ -80,19 +86,31 @@ export const serviceAreaCities = [
   "Bountiful",
 ] as const;
 
+export const nearbyAreas = [
+  { city: "Clearfield", lat: 41.1108, lng: -112.0261, note: "Home base at 665 N Main St — stop in or we come to you." },
+  { city: "Layton", lat: 41.0602, lng: -111.9711, note: "Under the Sept 18, 2026 tornado warning and its large-hail storm." },
+  { city: "Kaysville", lat: 41.0352, lng: -111.9385, note: "Named in the Sept 18, 2026 half-dollar hail warning." },
+  { city: "Syracuse", lat: 41.0894, lng: -112.0647, note: "Named in the Apr 11, 2026 quarter-size hail warning." },
+  { city: "Clinton", lat: 41.1397, lng: -112.0505, note: "Named in the Apr 11, 2026 quarter-size hail warning." },
+  { city: "Roy", lat: 41.1616, lng: -112.0263, note: "Named in the Apr 11, 2026 quarter-size hail warning." },
+  { city: "Sunset", lat: 41.1364, lng: -112.0311, note: "Just up Main St — mobile inspections at home or work." },
+  { city: "South Weber", lat: 41.1324, lng: -111.9302, note: "Named in the Sept 18, 2026 half-dollar hail warning." },
+  { city: "Ogden", lat: 41.223, lng: -111.9738, note: "Named in the Sept 18 and Apr 11, 2026 hail warnings." },
+] as const;
+
 export const hailStats = [
   { value: "19", label: "Severe weather warnings near Clearfield in the past 12 months" },
   { value: "18", label: "Times Doppler radar has detected hail at or near Clearfield" },
-  { value: '2"', label: "Egg-size hail reported in Davis County on Sept 18, 2026" },
+  { value: '1¾"', label: "Golf ball-size hail reported in Davis County on Sept 18, 2026" },
   { value: "Aug–Sep", label: "Clearfield's busiest months for severe-storm warnings" },
 ] as const;
 
 export const recentStorms = [
   {
     date: "Sept 18, 2026",
-    title: "Tornado + golf ball to egg-size hail",
+    title: "Tornado + golf ball-size hail",
     detail:
-      "A tornado touched down in the mountains above Fruit Heights while 1.5–2 inch hail hammered Layton and Kaysville. NWS warnings named Hill AFB, Layton, and Kaysville and said damage to vehicles was expected.",
+      "A tornado touched down in the mountains above Fruit Heights as golf ball-size hail was reported across Davis County. NWS warnings named Hill AFB, Layton, and Kaysville and said damage to vehicles was expected.",
   },
   {
     date: "Aug 29, 2026",
@@ -227,9 +245,9 @@ export const hailTrustPoints = [
     icon: "building",
   },
   {
-    title: "Hail-tested in North Texas",
+    title: "Ready for Wasatch Front storms",
     description:
-      "Texas leads the nation in hail claims. Our Carrollton team has repaired hail cars in the heart of hail country for years.",
+      "Summer storms build over the Great Salt Lake and hit north Davis County fast. We're based in Clearfield, so inspections start the day the hail stops — not when an out-of-town crew rolls in.",
     icon: "cloud-hail",
   },
   {
