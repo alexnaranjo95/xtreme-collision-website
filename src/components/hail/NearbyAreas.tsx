@@ -59,7 +59,7 @@ export function NearbyAreas() {
         <div className="mt-10 text-center">
           <a
             href="#estimate"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 font-heading text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-[1.03]"
+            className="inline-flex min-h-12 items-center justify-center rounded-md bg-primary px-6 py-3 font-heading text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-[1.03]"
           >
             Book a free hail inspection near you
           </a>

@@ -13,14 +13,14 @@ export function MobileBar({
       <div className="grid grid-cols-2 gap-2">
         <a
           href={location.phoneHref}
-          className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-3 text-sm font-bold uppercase tracking-wide text-primary-foreground"
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-primary px-4 py-3 text-sm font-bold uppercase tracking-wide text-primary-foreground"
         >
           <Phone className="h-4 w-4" aria-hidden="true" />
           Call Now
         </a>
         <a
           href="#estimate"
-          className="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-4 py-3 text-sm font-bold uppercase tracking-wide text-accent-foreground"
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-accent px-4 py-3 text-sm font-bold uppercase tracking-wide text-accent-foreground"
         >
           <CalendarCheck className="h-4 w-4" aria-hidden="true" />
           {bookLabel}

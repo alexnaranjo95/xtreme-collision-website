@@ -14,7 +14,7 @@ const icons: Record<(typeof mobileSteps)[number]["icon"], LucideIcon> = {
 
 export function MobileHailService() {
   return (
-    <section id="mobile" className="scroll-mt-28 bg-background py-20">
+    <section id="mobile" className="scroll-mt-40 bg-background py-20">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 lg:grid-cols-2 lg:gap-16">
         <div>
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-accent">

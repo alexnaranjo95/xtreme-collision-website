@@ -4,7 +4,7 @@ import { insurers } from "@/lib/site";
 
 export function HailClaims() {
   return (
-    <section id="claims" className="scroll-mt-28 bg-primary py-20 text-primary-foreground">
+    <section id="claims" className="scroll-mt-40 bg-primary py-20 text-primary-foreground">
       <div className="mx-auto max-w-7xl px-4">
         <div className="mx-auto mb-12 max-w-2xl text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-accent">

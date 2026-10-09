@@ -4,12 +4,21 @@ import { carrolltonLocation, site, type LocationContact } from "@/lib/site";
 
 export function SiteHeader({
   location = carrolltonLocation,
+  condenseOnMobile = false,
 }: {
   location?: LocationContact;
+  /** Drops the address strip on small screens so the hero calls-to-action stay on screen. */
+  condenseOnMobile?: boolean;
 }) {
   return (
     <header className="sticky top-0 z-50 w-full">
-      <div className="bg-primary text-primary-foreground">
+      <div
+        className={
+          condenseOnMobile
+            ? "hidden bg-primary text-primary-foreground sm:block"
+            : "bg-primary text-primary-foreground"
+        }
+      >
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-1 px-4 py-2 text-xs sm:flex-row sm:text-sm">
           <a
             href={location.phoneHref}
@@ -37,7 +46,7 @@ export function SiteHeader({
               alt={site.name}
               width={209}
               height={70}
-              className="h-14 w-auto"
+              className={condenseOnMobile ? "h-12 w-auto sm:h-14" : "h-14 w-auto"}
               priority
             />
           </a>
@@ -56,7 +65,7 @@ export function SiteHeader({
 
           <a
             href={location.phoneHref}
-            className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2.5 text-sm font-bold uppercase tracking-wide text-accent-foreground shadow-sm transition-transform hover:scale-[1.03]"
+            className="inline-flex min-h-11 items-center gap-2 rounded-md bg-accent px-4 py-2.5 text-sm font-bold uppercase tracking-wide text-accent-foreground shadow-sm transition-transform hover:scale-[1.03]"
           >
             <Phone className="h-4 w-4" aria-hidden="true" />
             <span className="hidden sm:inline">{location.phone}</span>

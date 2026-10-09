@@ -3,7 +3,7 @@ import { hailFaqs } from "@/lib/clearfield";
 
 export function HailFaq() {
   return (
-    <section id="faq" className="scroll-mt-28 bg-background py-20">
+    <section id="faq" className="scroll-mt-40 bg-background py-20">
       <div className="mx-auto max-w-3xl px-4">
         <div className="mb-10 text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-accent">

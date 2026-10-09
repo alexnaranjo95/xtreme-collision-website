@@ -144,8 +144,8 @@ export default function ClearfieldHailPage() {
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
         }}
       />
-      <SiteHeader location={clearfield} />
-      <main className="pb-16 md:pb-0">
+      <SiteHeader location={clearfield} condenseOnMobile />
+      <main className="pb-24 md:pb-0">
         <HailHero />
         <HailStorms />
         <MobileHailService />
@@ -169,18 +169,18 @@ export default function ClearfieldHailPage() {
 
             <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
               <a
-                href={clearfield.phoneHref}
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-7 py-4 font-heading text-base font-semibold uppercase tracking-wide text-primary-foreground shadow-lg transition-transform hover:scale-[1.03]"
-              >
-                <Phone className="h-5 w-5" aria-hidden="true" />
-                Call {clearfield.phone}
-              </a>
-              <a
                 href="#estimate"
-                className="inline-flex items-center justify-center gap-2 rounded-md border-2 border-primary bg-white/10 px-7 py-4 font-heading text-base font-semibold uppercase tracking-wide text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-primary px-7 py-4 font-heading text-base font-semibold uppercase tracking-wide text-primary-foreground shadow-lg transition-transform hover:scale-[1.03]"
               >
                 <CalendarCheck className="h-5 w-5" aria-hidden="true" />
                 Free Inspection
+              </a>
+              <a
+                href={clearfield.phoneHref}
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-white px-7 py-4 font-heading text-base font-semibold uppercase tracking-wide text-primary shadow-lg transition-transform hover:scale-[1.03]"
+              >
+                <Phone className="h-5 w-5" aria-hidden="true" />
+                Call {clearfield.phone}
               </a>
             </div>
           </div>

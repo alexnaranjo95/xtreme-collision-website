@@ -30,30 +30,23 @@ export function HailHero() {
   return (
     <>
       <div className="bg-accent text-accent-foreground">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-x-3 gap-y-1 px-4 py-2.5 text-center text-sm sm:flex-row">
-          <span className="inline-flex items-center gap-2 font-semibold">
-            <TriangleAlert className="h-4 w-4 shrink-0" aria-hidden="true" />
-            {latestStorm.date}: {latestStorm.title} in Davis County.
-          </span>
-          <a
-            href="#estimate"
-            className="font-semibold underline underline-offset-4 hover:no-underline"
-          >
-            Book a free hail inspection
-          </a>
-        </div>
+        <p className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2.5 text-center text-sm font-semibold sm:text-base">
+          <TriangleAlert className="h-4 w-4 shrink-0" aria-hidden="true" />
+          {latestStorm.date}: {latestStorm.title} in Davis County.
+        </p>
       </div>
 
-      <section id="top" className="relative isolate overflow-hidden">
-        <Image
-          src="/images/hail-paintless-dent-repair-clearfield-ut.webp"
-          alt="Xtreme Collision technician performing paintless dent repair on a hail-damaged vehicle"
-          fill
-          priority
-          className="-z-10 object-cover object-center"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary/96 via-primary/85 to-primary/55" />
+      <section id="top" className="relative isolate overflow-hidden bg-primary">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block">
+          <Image
+            src="/images/hail-paintless-dent-repair-clearfield-ut.webp"
+            alt=""
+            fill
+            className="object-cover object-[center_30%]"
+            sizes="50vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary from-0% via-primary/80 to-primary/25" />
+        </div>
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
           {hailstones.map((stone, i) => (
             <span
@@ -70,47 +63,47 @@ export function HailHero() {
           ))}
         </div>
 
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 md:py-24 lg:grid-cols-[1.3fr_0.9fr] lg:py-28">
-          <div className="flex flex-col items-start gap-6">
-            <span className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 font-heading text-xs font-bold uppercase tracking-[0.18em] text-accent-foreground shadow-lg shadow-accent/40">
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-8 px-4 py-8 sm:py-16 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
+          <div className="flex flex-col items-start gap-4 sm:gap-6">
+            <span className="order-1 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 font-heading text-xs font-bold uppercase tracking-[0.18em] text-accent-foreground shadow-lg shadow-accent/40">
               <CloudHail className="h-3.5 w-3.5" aria-hidden="true" />
               Hail Damage Repair • {clearfield.label}
             </span>
 
-            <p className="flex items-center gap-2 text-sm font-semibold text-primary-foreground/90">
+            <p className="order-2 flex items-center gap-2 text-sm font-semibold text-primary-foreground/90">
               <MapPin className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
               Locally based in Clearfield · Serving Davis &amp; Weber counties
             </p>
 
-            <h1 className="max-w-3xl font-heading text-4xl font-bold uppercase leading-[1.05] tracking-tight text-balance text-primary-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="order-3 max-w-3xl font-heading text-4xl font-bold uppercase leading-[1.05] tracking-tight text-balance text-primary-foreground sm:text-5xl lg:text-6xl">
               Hail Damage Repair in Clearfield, UT
             </h1>
 
-            <p className="max-w-xl text-lg leading-relaxed text-primary-foreground/85">
+            <p className="order-5 max-w-xl text-base leading-relaxed text-primary-foreground/85 sm:order-4 sm:text-lg">
               Free hail inspections at {clearfieldAddress.streetAddress} — or
               our mobile unit comes to you. Paintless dent repair that keeps your
               factory paint, and we handle the insurance claim from start to
               finish.
             </p>
 
-            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-              <a
-                href={clearfield.phoneHref}
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-7 py-4 font-heading text-base font-semibold uppercase tracking-wide text-accent-foreground shadow-lg shadow-accent/30 transition-transform hover:scale-[1.03]"
-              >
-                <Phone className="h-5 w-5" aria-hidden="true" />
-                Call {clearfield.phone}
-              </a>
+            <div className="order-4 flex w-full flex-col gap-3 sm:order-5 sm:w-auto sm:flex-row">
               <a
                 href="#estimate"
-                className="inline-flex items-center justify-center gap-2 rounded-md border-2 border-primary-foreground/40 bg-primary-foreground/10 px-7 py-4 font-heading text-base font-semibold uppercase tracking-wide text-primary-foreground backdrop-blur transition-colors hover:bg-primary-foreground/20"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-accent px-7 py-3.5 font-heading text-base font-semibold uppercase tracking-wide text-accent-foreground shadow-lg shadow-accent/30 transition-transform hover:scale-[1.03] sm:w-auto"
               >
                 <CalendarCheck className="h-5 w-5" aria-hidden="true" />
                 Free Hail Inspection
               </a>
+              <a
+                href={clearfield.phoneHref}
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-white px-7 py-3.5 font-heading text-base font-semibold uppercase tracking-wide text-primary shadow-lg transition-transform hover:scale-[1.03] sm:w-auto"
+              >
+                <Phone className="h-5 w-5" aria-hidden="true" />
+                Call {clearfield.phone}
+              </a>
             </div>
 
-            <p className="text-sm text-primary-foreground/70">
+            <p className="order-6 text-sm text-primary-foreground/70">
               Lifetime limited warranty · All major insurance · Serving Hill AFB
               families
             </p>
@@ -142,7 +135,7 @@ export function HailHero() {
             </ul>
             <a
               href="#estimate"
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent px-6 py-3.5 font-heading text-base font-semibold uppercase tracking-wide text-accent-foreground transition-transform hover:scale-[1.02]"
+              className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-accent px-6 py-3.5 font-heading text-base font-semibold uppercase tracking-wide text-accent-foreground transition-transform hover:scale-[1.02]"
             >
               Schedule My Inspection
             </a>

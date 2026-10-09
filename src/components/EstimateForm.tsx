@@ -24,7 +24,7 @@ export function EstimateForm({
   description?: string;
 }) {
   return (
-    <section id="estimate" className="bg-secondary py-20">
+    <section id="estimate" className="scroll-mt-40 bg-secondary py-20">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-2 lg:gap-16">
         <div>
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-accent">

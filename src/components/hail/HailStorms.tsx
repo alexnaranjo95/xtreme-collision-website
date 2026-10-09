@@ -3,7 +3,7 @@ import { hailStats, recentStorms } from "@/lib/clearfield";
 
 export function HailStorms() {
   return (
-    <section id="storms" className="scroll-mt-28 bg-primary py-20 text-primary-foreground">
+    <section id="storms" className="scroll-mt-40 bg-primary py-20 text-primary-foreground">
       <div className="mx-auto max-w-7xl px-4">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-accent">
@@ -55,9 +55,9 @@ export function HailStorms() {
               </p>
               <a
                 href="#estimate"
-                className="mt-4 text-sm font-semibold text-accent underline-offset-4 hover:underline"
+                className="mt-4 inline-flex min-h-11 items-center justify-center rounded-md bg-accent px-4 py-2.5 text-center text-sm font-bold uppercase tracking-wide text-accent-foreground transition-transform hover:scale-[1.02]"
               >
-                Parked outside? Get it checked
+                Book a free inspection
               </a>
             </li>
           ))}
