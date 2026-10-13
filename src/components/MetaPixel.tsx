@@ -2,7 +2,7 @@ import Script from "next/script";
 
 /** Meta dataset owned by the Xtreme Collision Utah ad account. */
 export const metaPixels = {
-  utah: "2386403355439727",
+  utah: "1035191289531131",
 } as const;
 
 /** Meta pixel with PageView, plus a Contact event whenever a tel: link is tapped. */
