@@ -123,7 +123,6 @@ export const certLogos = [
 ] as const;
 
 export const insurers = [
-  { src: "/images/insurers/state-farm.png", alt: "State Farm logo" },
   { src: "/images/insurers/geico.png", alt: "GEICO logo" },
   { src: "/images/insurers/progressive.png", alt: "Progressive logo" },
   { src: "/images/insurers/allstate.png", alt: "Allstate logo" },
@@ -329,7 +328,7 @@ export const hailAssurances = [
   {
     title: "All Major Carriers",
     description:
-      "State Farm, GEICO, Progressive, Allstate, USAA, Farmers, Liberty Mutual, Nationwide — we bill them directly.",
+      "GEICO, Progressive, Allstate, USAA, Farmers, Liberty Mutual, Nationwide — we bill them directly.",
     icon: "handshake",
   },
   {
