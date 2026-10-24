@@ -1,8 +1,10 @@
 import Image from "next/image";
-import { claimSteps, hailInsurancePoints } from "@/lib/clearfield";
 import { insurers } from "@/lib/site";
+import type { HailLocationData } from "@/lib/hail";
 
-export function HailClaims() {
+export function HailClaims({ data }: { data: HailLocationData }) {
+  const { claims } = data;
+
   return (
     <section id="claims" className="scroll-mt-40 bg-primary py-20 text-primary-foreground">
       <div className="mx-auto max-w-7xl px-4">
@@ -14,13 +16,12 @@ export function HailClaims() {
             From Hailstorm to Handled in 5 Steps
           </h2>
           <p className="mt-3 text-primary-foreground/75">
-            You make one call. We deal with the estimate, the adjuster, and the
-            supplements.
+            You make one call. We deal with the estimate, the adjuster, and the supplements.
           </p>
         </div>
 
         <ol className="grid gap-4 md:grid-cols-5">
-          {claimSteps.map((step, i) => (
+          {claims.steps.map((step, i) => (
             <li
               key={step.title}
               className="relative rounded-2xl border border-primary-foreground/10 bg-primary-foreground/5 p-6"
@@ -39,7 +40,7 @@ export function HailClaims() {
         </ol>
 
         <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {hailInsurancePoints.map((point) => (
+          {claims.insurancePoints.map((point) => (
             <div key={point.title} className="rounded-2xl bg-white p-6 text-foreground shadow-lg">
               <h3 className="font-heading text-lg font-semibold uppercase tracking-tight text-primary">
                 {point.title}

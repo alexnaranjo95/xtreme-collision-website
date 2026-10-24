@@ -1,25 +1,11 @@
 import type { Metadata } from "next";
-import { CalendarCheck, Phone } from "lucide-react";
-import { EstimateForm } from "@/components/EstimateForm";
-import { HailClaims } from "@/components/hail/HailClaims";
-import { HailDamageGuide } from "@/components/hail/HailDamageGuide";
-import { HailFaq } from "@/components/hail/HailFaq";
-import { HailHero } from "@/components/hail/HailHero";
-import { HailStorms } from "@/components/hail/HailStorms";
-import { HailTrust } from "@/components/hail/HailTrust";
-import { MobileHailService } from "@/components/hail/MobileHailService";
-import { NearbyAreas } from "@/components/hail/NearbyAreas";
-import { PdrSection } from "@/components/hail/PdrSection";
-import { MobileBar } from "@/components/MobileBar";
-import { SiteFooter } from "@/components/SiteFooter";
-import { SiteHeader } from "@/components/SiteHeader";
+import { HailLandingPage } from "@/components/HailLandingPage";
 import {
   clearfield,
   clearfieldAddress,
-  clearfieldEstimateForm,
   clearfieldGeo,
+  clearfieldHailData,
   clearfieldPageUrl,
-  hailFaqs,
   serviceAreaCities,
 } from "@/lib/clearfield";
 import { site } from "@/lib/site";
@@ -127,7 +113,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: hailFaqs.map((faq) => ({
+    mainEntity: clearfieldHailData.faq.items.map((faq) => ({
       "@type": "Question",
       name: faq.question,
       acceptedAnswer: { "@type": "Answer", text: faq.answer },
@@ -144,59 +130,7 @@ export default function ClearfieldHailPage() {
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
         }}
       />
-      <SiteHeader location={clearfield} condenseOnMobile />
-      <main className="pb-24 md:pb-0">
-        <HailHero />
-        <HailStorms />
-        <MobileHailService />
-        <HailDamageGuide />
-        <PdrSection />
-        <HailClaims />
-        <HailTrust />
-        <NearbyAreas />
-
-        <section className="bg-accent py-16 text-accent-foreground">
-          <div className="mx-auto flex max-w-7xl flex-col items-start gap-6 px-4 md:flex-row md:items-center md:justify-between">
-            <div>
-              <h2 className="font-heading text-3xl font-bold uppercase tracking-tight text-balance sm:text-4xl">
-                Caught in the Last Storm?
-              </h2>
-              <p className="mt-3 max-w-xl leading-relaxed text-accent-foreground/85">
-                Book a free hail inspection before shops and adjusters fill up.
-                We&apos;ll come to you anywhere from Bountiful to Ogden.
-              </p>
-            </div>
-
-            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-              <a
-                href="#estimate"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-primary px-7 py-4 font-heading text-base font-semibold uppercase tracking-wide text-primary-foreground shadow-lg transition-transform hover:scale-[1.03]"
-              >
-                <CalendarCheck className="h-5 w-5" aria-hidden="true" />
-                Free Inspection
-              </a>
-              <a
-                href={clearfield.phoneHref}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-white px-7 py-4 font-heading text-base font-semibold uppercase tracking-wide text-primary shadow-lg transition-transform hover:scale-[1.03]"
-              >
-                <Phone className="h-5 w-5" aria-hidden="true" />
-                Call {clearfield.phone}
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <HailFaq />
-        <EstimateForm
-          location={clearfield}
-          form={clearfieldEstimateForm}
-          eyebrow="Free Hail Inspection"
-          heading="Book Your Free Hail Inspection"
-          description="Tell us about your vehicle and where you'd like us to meet you. We'll confirm a time for an inspection at your home, work, or our Clearfield location at 665 N Main St."
-        />
-      </main>
-      <SiteFooter location={clearfield} />
-      <MobileBar location={clearfield} bookLabel="Inspection" />
+      <HailLandingPage data={clearfieldHailData} />
     </>
   );
 }

@@ -1,15 +1,17 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
-import { pdrBenefits } from "@/lib/clearfield";
+import type { HailLocationData } from "@/lib/hail";
 
-export function PdrSection() {
+export function PdrSection({ data }: { data: HailLocationData }) {
+  const { pdr } = data;
+
   return (
     <section id="pdr" className="scroll-mt-28 bg-background py-20">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 lg:grid-cols-2">
         <div className="grid grid-cols-5 gap-4">
           <div className="relative col-span-3 aspect-[3/4] overflow-hidden rounded-2xl shadow-xl">
             <Image
-              src="/images/hail-paintless-dent-repair-clearfield-ut.webp"
+              src={pdr.images.hero}
               alt="Xtreme Collision technician using a PDR rod to push out hail dents from inside a vehicle"
               fill
               className="object-cover"
@@ -18,7 +20,7 @@ export function PdrSection() {
           </div>
           <div className="relative col-span-2 mt-12 aspect-[3/4] overflow-hidden rounded-2xl shadow-xl">
             <Image
-              src="/images/hail-damage-panel-repair-clearfield-ut.webp"
+              src={pdr.images.secondary}
               alt="Technician reading hail dents on a hood under paintless dent repair lights"
               fill
               className="object-cover"
@@ -35,14 +37,13 @@ export function PdrSection() {
             Dents Out. Factory Paint Stays.
           </h2>
           <p className="mt-4 max-w-lg leading-relaxed text-muted-foreground">
-            Paintless dent repair (PDR) is the go-to fix for hail. Our
-            technicians read each dent under specialized lights, then use
-            precision rods to massage the metal back into shape from behind the
-            panel — no sanding, filler, or repaint.
+            Paintless dent repair (PDR) is the go-to fix for hail. Our technicians read each dent
+            under specialized lights, then use precision rods to massage the metal back into shape
+            from behind the panel — no sanding, filler, or repaint.
           </p>
 
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {pdrBenefits.map((benefit) => (
+            {pdr.benefits.map((benefit) => (
               <li key={benefit} className="flex items-start gap-2 text-sm">
                 <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
                   <Check className="h-3.5 w-3.5" aria-hidden="true" />
@@ -55,9 +56,9 @@ export function PdrSection() {
           <div className="mt-8 rounded-xl border border-border bg-secondary p-5">
             <p className="font-semibold text-primary">When PDR isn&apos;t enough</p>
             <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-              Cracked paint, torn metal, or very sharp dents need conventional
-              repair. We handle that too — with Sherwin-Williams certified color
-              matching and OEM parts — all under the same claim.
+              Cracked paint, torn metal, or very sharp dents need conventional repair. We handle
+              that too — with Sherwin-Williams certified color matching and OEM parts — all under
+              the same claim.
             </p>
           </div>
         </div>

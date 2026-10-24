@@ -1,23 +1,25 @@
 import { MapPin } from "lucide-react";
-import { clearfieldGeo, nearbyAreas } from "@/lib/clearfield";
+import type { HailLocationData } from "@/lib/hail";
 
 const EARTH_RADIUS_MILES = 3958.8;
 
-function milesFromShop(lat: number, lng: number) {
-  const toRad = (deg: number) => (deg * Math.PI) / 180;
-  const dLat = toRad(lat - clearfieldGeo.latitude);
-  const dLng = toRad(lng - clearfieldGeo.longitude);
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRad(clearfieldGeo.latitude)) * Math.cos(toRad(lat)) * Math.sin(dLng / 2) ** 2;
-  return 2 * EARTH_RADIUS_MILES * Math.asin(Math.sqrt(a));
-}
+export function NearbyAreas({ data }: { data: HailLocationData }) {
+  const { nearby, geo } = data;
 
-function distanceLabel(miles: number) {
-  return miles < 1 ? "Under 1 mi away" : `About ${Math.round(miles)} mi away`;
-}
+  function milesFromShop(lat: number, lng: number) {
+    const toRad = (deg: number) => (deg * Math.PI) / 180;
+    const dLat = toRad(lat - geo.latitude);
+    const dLng = toRad(lng - geo.longitude);
+    const a =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(toRad(geo.latitude)) * Math.cos(toRad(lat)) * Math.sin(dLng / 2) ** 2;
+    return 2 * EARTH_RADIUS_MILES * Math.asin(Math.sqrt(a));
+  }
 
-export function NearbyAreas() {
+  function distanceLabel(miles: number) {
+    return miles < 1 ? "Under 1 mi away" : `About ${Math.round(miles)} mi away`;
+  }
+
   return (
     <section id="near-you" className="scroll-mt-28 bg-background py-20">
       <div className="mx-auto max-w-7xl px-4">
@@ -28,14 +30,11 @@ export function NearbyAreas() {
           <h2 className="font-heading text-3xl font-bold uppercase tracking-tight text-balance text-primary sm:text-4xl">
             Your Neighborhood Hail Shop
           </h2>
-          <p className="mt-3 text-muted-foreground">
-            From Kaysville to Ogden, we&apos;re a short drive from your driveway
-            — and our mobile unit can come to you.
-          </p>
+          <p className="mt-3 text-muted-foreground">{nearby.intro}</p>
         </div>
 
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {nearbyAreas.map((area) => (
+          {nearby.areas.map((area) => (
             <li
               key={area.city}
               className="flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm"
@@ -45,7 +44,7 @@ export function NearbyAreas() {
               </span>
               <div>
                 <h3 className="font-heading text-lg font-semibold uppercase tracking-tight text-primary">
-                  {area.city}, UT
+                  {area.city}, {nearby.stateSuffix}
                 </h3>
                 <p className="text-xs font-semibold uppercase tracking-wide text-accent">
                   {distanceLabel(milesFromShop(area.lat, area.lng))}

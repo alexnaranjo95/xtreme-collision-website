@@ -1,7 +1,9 @@
 import { ChevronDown } from "lucide-react";
-import { hailFaqs } from "@/lib/clearfield";
+import type { HailLocationData } from "@/lib/hail";
 
-export function HailFaq() {
+export function HailFaq({ data }: { data: HailLocationData }) {
+  const { faq } = data;
+
   return (
     <section id="faq" className="scroll-mt-40 bg-background py-20">
       <div className="mx-auto max-w-3xl px-4">
@@ -10,25 +12,25 @@ export function HailFaq() {
             Hail Repair FAQ
           </p>
           <h2 className="font-heading text-3xl font-bold uppercase tracking-tight text-balance text-primary sm:text-4xl">
-            Questions Clearfield Drivers Ask
+            {faq.heading}
           </h2>
         </div>
 
         <div className="space-y-3">
-          {hailFaqs.map((faq, i) => (
+          {faq.items.map((item, i) => (
             <details
-              key={faq.question}
+              key={item.question}
               className="faq-item group rounded-xl border border-border bg-card shadow-sm open:border-accent"
               open={i === 0}
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold text-primary">
-                {faq.question}
+                {item.question}
                 <ChevronDown
                   className="faq-chevron h-5 w-5 shrink-0 text-accent transition-transform"
                   aria-hidden="true"
                 />
               </summary>
-              <p className="px-5 pb-5 leading-relaxed text-muted-foreground">{faq.answer}</p>
+              <p className="px-5 pb-5 leading-relaxed text-muted-foreground">{item.answer}</p>
             </details>
           ))}
         </div>

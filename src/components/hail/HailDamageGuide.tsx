@@ -1,7 +1,9 @@
 import { Check } from "lucide-react";
-import { damageChecks, hailSizes } from "@/lib/clearfield";
+import type { HailLocationData } from "@/lib/hail";
 
-export function HailDamageGuide() {
+export function HailDamageGuide({ data }: { data: HailLocationData }) {
+  const { damageGuide } = data;
+
   return (
     <section id="damage-check" className="scroll-mt-28 bg-secondary py-20">
       <div className="mx-auto max-w-7xl px-4">
@@ -12,10 +14,7 @@ export function HailDamageGuide() {
           <h2 className="font-heading text-3xl font-bold uppercase tracking-tight text-balance text-primary sm:text-4xl">
             Is Your Car Hail Damaged?
           </h2>
-          <p className="mt-3 text-muted-foreground">
-            Hail dents are easy to miss in bright Utah sun. Here&apos;s what to
-            look for — and what different hail sizes usually do to a vehicle.
-          </p>
+          <p className="mt-3 text-muted-foreground">{damageGuide.intro}</p>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-2">
@@ -24,7 +23,7 @@ export function HailDamageGuide() {
               Hail size vs. vehicle damage
             </h3>
             <ul className="space-y-4">
-              {hailSizes.map((hail) => (
+              {damageGuide.hailSizes.map((hail) => (
                 <li key={hail.name} className="flex items-center gap-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center">
                     <span
@@ -46,7 +45,7 @@ export function HailDamageGuide() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            {damageChecks.map((check) => (
+            {damageGuide.checks.map((check) => (
               <article
                 key={check.title}
                 className="rounded-2xl border border-border bg-card p-6 shadow-sm"
@@ -67,12 +66,11 @@ export function HailDamageGuide() {
                 Not sure what you&apos;re looking at?
               </p>
               <p className="mt-1 text-sm text-primary-foreground/75">
-                Our technicians check every panel under PDR lights — free and
-                with no obligation.
+                Our technicians check every panel under PDR lights — free and with no obligation.
               </p>
               <a
                 href="#estimate"
-                className="mt-4 inline-flex w-fit items-center justify-center rounded-md bg-accent px-5 py-3 text-sm font-bold uppercase tracking-wide text-accent-foreground transition-transform hover:scale-[1.03]"
+                className="mt-4 inline-flex min-h-11 w-fit items-center justify-center rounded-md bg-accent px-5 py-3 text-sm font-bold uppercase tracking-wide text-accent-foreground transition-transform hover:scale-[1.03]"
               >
                 Get a free hail inspection
               </a>

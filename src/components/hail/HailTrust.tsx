@@ -1,13 +1,15 @@
 import { BadgeCheck, Building2, CloudHail, type LucideIcon } from "lucide-react";
-import { hailTrustPoints } from "@/lib/clearfield";
+import type { HailLocationData } from "@/lib/hail";
 
-const icons: Record<(typeof hailTrustPoints)[number]["icon"], LucideIcon> = {
+const icons: Record<"building" | "cloud-hail" | "badge-check", LucideIcon> = {
   building: Building2,
   "cloud-hail": CloudHail,
   "badge-check": BadgeCheck,
 };
 
-export function HailTrust() {
+export function HailTrust({ data }: { data: HailLocationData }) {
+  const { trust } = data;
+
   return (
     <section id="why-local" className="scroll-mt-28 bg-secondary py-20">
       <div className="mx-auto max-w-7xl px-4">
@@ -18,15 +20,11 @@ export function HailTrust() {
           <h2 className="font-heading text-3xl font-bold uppercase tracking-tight text-balance text-primary sm:text-4xl">
             A Hail Shop That&apos;s Still Here Next Season
           </h2>
-          <p className="mt-3 text-muted-foreground">
-            The National Insurance Crime Bureau warns drivers about out-of-town
-            contractors who show up after hailstorms. Here&apos;s why Clearfield
-            drivers choose us instead.
-          </p>
+          <p className="mt-3 text-muted-foreground">{trust.intro}</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {hailTrustPoints.map((point) => {
+          {trust.points.map((point) => {
             const Icon = icons[point.icon];
             return (
               <article

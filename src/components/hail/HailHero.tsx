@@ -8,7 +8,7 @@ import {
   TriangleAlert,
   Truck,
 } from "lucide-react";
-import { clearfield, clearfieldAddress, recentStorms } from "@/lib/clearfield";
+import type { HailLocationData } from "@/lib/hail";
 
 const hailstones = Array.from({ length: 28 }, (_, i) => ({
   left: (i * 37) % 100,
@@ -18,28 +18,32 @@ const hailstones = Array.from({ length: 28 }, (_, i) => ({
 }));
 
 const inspectionPerks = [
-  "At your home, work, or our Clearfield location",
+  "At your home, work, or our shop",
   "Every dent mapped & photographed",
   "Estimate sent straight to your insurer",
   "Free, no obligation",
 ] as const;
 
-const latestStorm = recentStorms[0];
+export function HailHero({ data }: { data: HailLocationData }) {
+  const { location, hero } = data;
+  const latestStorm = data.storms.events[0];
 
-export function HailHero() {
   return (
     <>
       <div className="bg-accent text-accent-foreground">
         <p className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2.5 text-center text-sm font-semibold sm:text-base">
           <TriangleAlert className="h-4 w-4 shrink-0" aria-hidden="true" />
-          {latestStorm.date}: {latestStorm.title} in Davis County.
+          {latestStorm.date}: {latestStorm.title} in {hero.countyName}.
         </p>
       </div>
 
       <section id="top" className="relative isolate overflow-hidden bg-primary">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block"
+        >
           <Image
-            src="/images/hail-paintless-dent-repair-clearfield-ut.webp"
+            src={hero.image}
             alt=""
             fill
             className="object-cover object-[center_30%]"
@@ -67,23 +71,20 @@ export function HailHero() {
           <div className="flex flex-col items-start gap-4 sm:gap-6">
             <span className="order-1 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 font-heading text-xs font-bold uppercase tracking-[0.18em] text-accent-foreground shadow-lg shadow-accent/40">
               <CloudHail className="h-3.5 w-3.5" aria-hidden="true" />
-              Hail Damage Repair • {clearfield.label}
+              Hail Damage Repair • {location.label}
             </span>
 
             <p className="order-2 flex items-center gap-2 text-sm font-semibold text-primary-foreground/90">
               <MapPin className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-              Locally based in Clearfield · Serving Davis &amp; Weber counties
+              {hero.locatorLine}
             </p>
 
             <h1 className="order-3 max-w-3xl font-heading text-4xl font-bold uppercase leading-[1.05] tracking-tight text-balance text-primary-foreground sm:text-5xl lg:text-6xl">
-              Hail Damage Repair in Clearfield, UT
+              {hero.heading}
             </h1>
 
             <p className="order-5 max-w-xl text-base leading-relaxed text-primary-foreground/85 sm:order-4 sm:text-lg">
-              Free hail inspections at {clearfieldAddress.streetAddress} — or
-              our mobile unit comes to you. Paintless dent repair that keeps your
-              factory paint, and we handle the insurance claim from start to
-              finish.
+              {hero.body}
             </p>
 
             <div className="order-4 flex w-full flex-col gap-3 sm:order-5 sm:w-auto sm:flex-row">
@@ -95,18 +96,15 @@ export function HailHero() {
                 Free Hail Inspection
               </a>
               <a
-                href={clearfield.phoneHref}
+                href={location.phoneHref}
                 className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-white px-7 py-3.5 font-heading text-base font-semibold uppercase tracking-wide text-primary shadow-lg transition-transform hover:scale-[1.03] sm:w-auto"
               >
                 <Phone className="h-5 w-5" aria-hidden="true" />
-                Call {clearfield.phone}
+                Call {location.phone}
               </a>
             </div>
 
-            <p className="order-6 text-sm text-primary-foreground/70">
-              Lifetime limited warranty · All major insurance · Serving Hill AFB
-              families
-            </p>
+            <p className="order-6 text-sm text-primary-foreground/70">{hero.trustLine}</p>
           </div>
 
           <div className="rounded-2xl border border-primary-foreground/15 bg-primary/70 p-7 shadow-2xl backdrop-blur-md">
@@ -118,9 +116,7 @@ export function HailHero() {
                 <p className="font-heading text-xl font-bold uppercase tracking-tight text-primary-foreground">
                   Free Mobile Hail Inspection
                 </p>
-                <p className="text-sm text-primary-foreground/70">
-                  Davis &amp; Weber counties
-                </p>
+                <p className="text-sm text-primary-foreground/70">{hero.areas}</p>
               </div>
             </div>
             <ul className="space-y-3">

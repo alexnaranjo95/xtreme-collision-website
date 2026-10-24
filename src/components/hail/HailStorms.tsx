@@ -1,26 +1,24 @@
 import { CloudLightning } from "lucide-react";
-import { hailStats, recentStorms } from "@/lib/clearfield";
+import type { HailLocationData } from "@/lib/hail";
 
-export function HailStorms() {
+export function HailStorms({ data }: { data: HailLocationData }) {
+  const { storms } = data;
+
   return (
     <section id="storms" className="scroll-mt-40 bg-primary py-20 text-primary-foreground">
       <div className="mx-auto max-w-7xl px-4">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-            Davis County Hail Report
+            {storms.eyebrow}
           </p>
           <h2 className="font-heading text-3xl font-bold uppercase tracking-tight text-balance sm:text-4xl">
-            Clearfield Gets Hit More Than You Think
+            {storms.heading}
           </h2>
-          <p className="mt-3 text-primary-foreground/75">
-            Storms build over the Great Salt Lake and slam into north Davis
-            County. If your car was parked outside during any of these, it&apos;s
-            worth a free look.
-          </p>
+          <p className="mt-3 text-primary-foreground/75">{storms.intro}</p>
         </div>
 
         <dl className="mb-14 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {hailStats.map((stat) => (
+          {storms.stats.map((stat) => (
             <div
               key={stat.label}
               className="flex flex-col items-center rounded-2xl border border-primary-foreground/10 bg-primary-foreground/5 px-4 py-6 text-center"
@@ -36,7 +34,7 @@ export function HailStorms() {
         </dl>
 
         <ol className="relative grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {recentStorms.map((storm) => (
+          {storms.events.map((storm) => (
             <li
               key={storm.date}
               className="flex flex-col rounded-2xl bg-white p-6 text-foreground shadow-lg"
@@ -63,10 +61,7 @@ export function HailStorms() {
           ))}
         </ol>
 
-        <p className="mt-8 text-center text-xs text-primary-foreground/50">
-          Sources: National Weather Service Salt Lake City warnings (via
-          Interactive Hail Maps), KSL, KUTV, and ABC4 storm coverage.
-        </p>
+        <p className="mt-8 text-center text-xs text-primary-foreground/50">{storms.sources}</p>
       </div>
     </section>
   );
