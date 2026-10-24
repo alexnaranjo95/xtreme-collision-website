@@ -7,14 +7,14 @@ export const phoenixPath = "/hail-damage-repair-phoenix-az";
 export const phoenixPageUrl = `https://www.xtremecollision.com${phoenixPath}`;
 
 /**
- * PHONE PLACEHOLDER — a dedicated Phoenix/Arizona number is being registered in
- * GoHighLevel. Until it is provisioned, calls route to the main Texas line so
- * no lead is dropped.
+ * Phoenix line. The number pool swaps this with a tracking number on the live
+ * site; this value is what shows before the pool loads and the default the
+ * Google Business Profile must match.
  */
 export const phoenix: LocationContact = {
   label: "Phoenix, AZ",
-  phone: "(972) 233-0207",
-  phoneHref: "tel:+19722330207",
+  phone: "(602) 560-4066",
+  phoneHref: "tel:+16025604066",
   address: "Phoenix, AZ 85021",
   areas: "Phoenix, Glendale, Peoria, Scottsdale, Tempe & the Valley",
   hours: [
