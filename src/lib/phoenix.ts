@@ -41,14 +41,10 @@ export const phoenix: LocationContact = {
   otherLocations: [],
 };
 
-/**
- * FORM PLACEHOLDER — a dedicated Phoenix form is being created in GoHighLevel.
- * Until its ID is available, this falls back to the Utah form so the page still
- * captures leads.
- */
+/** Dedicated Phoenix form ("Xtreme Collision — Free Estimate - Pheonix" in GHL). */
 export const phoenixEstimateForm = {
-  id: "gwbDGcC7XpRzinMUtaLG",
-  name: "Xtreme Collision — Free Estimate - Utah",
+  id: "o57Ulk66nYWSXYCuScVT",
+  name: "Xtreme Collision — Free Estimate - Pheonix",
   height: 878,
   cookieConsent: true,
 } as const;

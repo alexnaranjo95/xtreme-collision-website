@@ -6,6 +6,7 @@ const LEADCONNECTOR_LOCATION_ID = "7265He95WmGfBaKz95x6";
 export const numberPools = {
   carrollton: "n9sMqLoOEpR6FQWJu9U5",
   clearfield: "DeLzDnijkE1c9Pce02cS",
+  phoenix: "gxDra73s1PCbGCOXvzcV",
 } as const;
 
 /** Call-tracking / session scripts — marketing pages only (not A2P chat). */
