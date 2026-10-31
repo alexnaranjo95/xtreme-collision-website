@@ -56,6 +56,13 @@ export type HailLocationData = {
       icon: "truck" | "search" | "wrench";
     }[];
     serviceAreaCities: readonly string[];
+    /** Physical locations this market serves from (with Directions links). */
+    locations?: readonly {
+      name: string;
+      address: string;
+      note?: string;
+      directionsHref: string;
+    }[];
     /** Omit for a pure service-area operation; the section then renders a coverage card. */
     map?: {
       src: string;

@@ -84,10 +84,21 @@ export function SiteFooter({
               <Phone className="h-4 w-4 text-accent" aria-hidden="true" />
               {location.phone}
             </a>
-            <p className="flex items-start gap-2">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-              {location.address}
-            </p>
+            {location.addresses && location.addresses.length > 0 ? (
+              <ul className="space-y-2">
+                {location.addresses.map((addr) => (
+                  <li key={addr} className="flex items-start gap-2">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                    {addr}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="flex items-start gap-2">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                {location.address}
+              </p>
+            )}
           </div>
         </div>
 

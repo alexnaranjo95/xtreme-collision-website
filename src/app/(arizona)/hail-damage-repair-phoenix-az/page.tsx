@@ -63,6 +63,32 @@ function jsonLd() {
         addressCountry: "US",
       },
       geo: { "@type": "GeoCoordinates", ...phoenixGeo },
+      location: [
+        {
+          "@type": "Place",
+          name: "Xtreme Collision — Phoenix",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "2432 W Peoria Ave, Unit 1095",
+            addressLocality: "Phoenix",
+            addressRegion: "AZ",
+            postalCode: "85029",
+            addressCountry: "US",
+          },
+        },
+        {
+          "@type": "Place",
+          name: "Xtreme Collision — Glendale",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "10922 W Glenn Dr",
+            addressLocality: "Glendale",
+            addressRegion: "AZ",
+            postalCode: "85307",
+            addressCountry: "US",
+          },
+        },
+      ],
       areaServed: phoenixServiceAreaCities.map((city) => ({
         "@type": "City",
         name: `${city}, AZ`,

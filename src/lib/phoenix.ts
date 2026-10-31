@@ -39,6 +39,10 @@ export const phoenix: LocationContact = {
     "Hail damage repair and paintless dent repair for Phoenix, Glendale, Peoria, and the Valley of the Sun.",
   showSocialLinks: false,
   otherLocations: [],
+  addresses: [
+    "2432 W Peoria Ave, Unit 1095, Phoenix, AZ 85029",
+    "10922 W Glenn Dr, Glendale, AZ 85307",
+  ],
 };
 
 /** Dedicated Phoenix form ("Xtreme Collision — Free Estimate - Pheonix" in GHL). */
@@ -156,6 +160,22 @@ export const phoenixHailData: HailLocationData = {
       },
     ],
     serviceAreaCities: phoenixServiceAreaCities,
+    locations: [
+      {
+        name: "Xtreme Collision — Phoenix",
+        address: "2432 W Peoria Ave, Unit 1095, Phoenix, AZ 85029",
+        note: "Off Peoria Ave, serving north Phoenix and the metro",
+        directionsHref:
+          "https://www.google.com/maps/dir/?api=1&destination=2432+W+Peoria+Ave,+Unit+1095,+Phoenix,+AZ+85029",
+      },
+      {
+        name: "Xtreme Collision — Glendale",
+        address: "10922 W Glenn Dr, Glendale, AZ 85307",
+        note: "Serving Glendale and the west Valley",
+        directionsHref:
+          "https://www.google.com/maps/dir/?api=1&destination=10922+W+Glenn+Dr,+Glendale,+AZ+85307",
+      },
+    ],
   },
 
   damageGuide: {

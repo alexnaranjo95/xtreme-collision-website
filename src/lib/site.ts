@@ -86,6 +86,8 @@ export type LocationContact = {
   /** Brand social profiles are Texas listings, so other locations hide them. */
   showSocialLinks: boolean;
   otherLocations: readonly { href: string; label: string }[];
+  /** Multiple physical addresses served from (rendered in the footer). */
+  addresses?: readonly string[];
 };
 
 export const carrolltonLocation: LocationContact = {

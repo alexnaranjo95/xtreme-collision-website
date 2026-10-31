@@ -96,20 +96,54 @@ export function MobileHailService({ data }: { data: HailLocationData }) {
               </div>
             </>
           ) : (
-            <div className="flex flex-1 flex-col items-center justify-center gap-4 p-10 text-center">
-              <span className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-accent text-accent-foreground">
-                <Truck className="h-8 w-8" aria-hidden="true" />
-              </span>
-              <p className="font-heading text-xl font-bold uppercase tracking-tight text-primary">
+            <div className="flex flex-1 flex-col justify-center gap-4 p-8">
+              <div className="flex items-center justify-center">
+                <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-accent-foreground">
+                  <Truck className="h-7 w-7" aria-hidden="true" />
+                </span>
+              </div>
+              <p className="text-center font-heading text-xl font-bold uppercase tracking-tight text-primary">
                 Mobile service, {location.label}
               </p>
-              <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+              <p className="text-center text-sm leading-relaxed text-muted-foreground">
                 {location.areas}. We come to your home or work for the free inspection, and
                 handle the repair at our nearest shop.
               </p>
+
+              {mobile.locations && mobile.locations.length > 0 ? (
+                <ul className="space-y-3">
+                  {mobile.locations.map((loc) => (
+                    <li
+                      key={loc.address}
+                      className="flex flex-col gap-3 rounded-xl border border-border bg-secondary p-4 sm:flex-row sm:items-center sm:justify-between"
+                    >
+                      <div className="flex items-start gap-3">
+                        <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+                        <div>
+                          <p className="font-semibold text-primary">{loc.name}</p>
+                          <p className="text-sm text-muted-foreground">{loc.address}</p>
+                          {loc.note ? (
+                            <p className="text-xs text-muted-foreground">{loc.note}</p>
+                          ) : null}
+                        </div>
+                      </div>
+                      <a
+                        href={loc.directionsHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex shrink-0 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-bold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-[1.02]"
+                      >
+                        <Navigation className="h-4 w-4" aria-hidden="true" />
+                        Directions
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+
               <a
                 href="#estimate"
-                className="mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 font-heading text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-[1.03]"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 font-heading text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-transform hover:scale-[1.03]"
               >
                 Schedule my inspection
               </a>
