@@ -1,4 +1,5 @@
 import { ChatWidget } from "@/components/ChatWidget";
+import { GoogleTag } from "@/components/GoogleTag";
 import { LeadConnectorTracking, numberPools } from "@/components/LeadConnectorTracking";
 import { hailCities } from "@/lib/site";
 
@@ -70,6 +71,7 @@ export default function MarketingLayout({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
       <LeadConnectorTracking poolId={numberPools.carrollton} />
+      <GoogleTag />
       {children}
       <ChatWidget />
     </>
