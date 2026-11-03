@@ -1,4 +1,5 @@
 import { ChatWidget } from "@/components/ChatWidget";
+import { GoogleTag } from "@/components/GoogleTag";
 import { LeadConnectorTracking, numberPools } from "@/components/LeadConnectorTracking";
 
 export default function ArizonaLayout({
@@ -9,6 +10,7 @@ export default function ArizonaLayout({
   return (
     <>
       <LeadConnectorTracking poolId={numberPools.phoenix} />
+      <GoogleTag />
       {children}
       <ChatWidget />
     </>
