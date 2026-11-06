@@ -1,8 +1,11 @@
 import Script from "next/script";
 
-/** Meta dataset owned by the Xtreme Collision Utah ad account. */
+/** Meta datasets, one per city so ad conversion signals stay isolated. */
 export const metaPixels = {
+  /** Clearfield, UT hail campaign. */
   utah: "1035191289531131",
+  /** Phoenix, AZ hail campaign. */
+  phoenix: "2882035655508132",
 } as const;
 
 /**

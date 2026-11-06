@@ -11,7 +11,7 @@ export default function ArizonaLayout({
   return (
     <>
       <LeadConnectorTracking poolId={numberPools.phoenix} />
-      <MetaPixel pixelId={metaPixels.utah} />
+      <MetaPixel pixelId={metaPixels.phoenix} />
       <GoogleTag />
       {children}
       <ChatWidget />
