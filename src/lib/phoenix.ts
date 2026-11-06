@@ -3,8 +3,16 @@ import type { LocationContact } from "@/lib/site";
 
 export const phoenixPath = "/hail-damage-repair-phoenix-az";
 
-/** Canonical URL for the Phoenix ad landing page. */
-export const phoenixPageUrl = `https://www.xtremecollision.com${phoenixPath}`;
+/**
+ * The subdomain root rewrites to `phoenixPath` (see next.config.ts). Running the
+ * Phoenix ad landing page on its own host keeps its Meta pixel, Google tag, and
+ * LeadConnector number pool isolated from the Carrollton/Utah pages, so ad
+ * conversion signals can't cross-contaminate.
+ */
+export const phoenixHost = "phoenix.xtremecollision.com";
+
+/** Canonical URL for the Phoenix ad landing page (its own subdomain). */
+export const phoenixPageUrl = `https://${phoenixHost}/`;
 
 /**
  * Phoenix line. The number pool swaps this with a tracking number on the live
